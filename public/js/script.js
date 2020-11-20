@@ -91,7 +91,7 @@ elements.btnLogin.addEventListener('click', function (e) {
     acc => acc.username === elements.inputLoginUsername.value
   );
 
-  if (currentAccount?.pin === Number(elements.inputLoginPin.value)) {
+  if (currentAccount?.pin === +elements.inputLoginPin.value) {
     // Display UI and message
     elements.labelWelcome.textContent = `Welcome back, ${
       currentAccount.owner.split(' ')[0]
@@ -113,7 +113,7 @@ elements.btnLogin.addEventListener('click', function (e) {
 
 elements.btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
-  const amount = Number(elements.inputTransferAmount.value);
+  const amount = +elements.inputTransferAmount.value;
   const receiverAcc = accounts.find(
     acc => acc.username === elements.inputTransferTo.value
   );
@@ -141,7 +141,7 @@ elements.btnTransfer.addEventListener('click', function (e) {
 elements.btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
 
-  const amount = Number(elements.inputLoanAmount.value);
+  const amount = +elements.inputLoanAmount.value;
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
     // Add movement
@@ -160,7 +160,7 @@ elements.btnClose.addEventListener('click', function (e) {
 
   if (
     elements.inputCloseUsername.value === currentAccount.username &&
-    Number(elements.inputClosePin.value) === currentAccount.pin
+    +elements.inputClosePin.value === currentAccount.pin
   ) {
     const index = accounts.findIndex(
       acc => acc.username === currentAccount.username
