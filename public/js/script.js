@@ -269,6 +269,10 @@ elements.btnLoan.addEventListener('click', function (e) {
       // Update UI
       updateUI(currentAccount);
 
+      // clear loader
+      this.innerHTML = '&rarr;';
+      this.disabled = false;
+
       // Reset timer
       clearInterval(timer);
       timer = startLogOutTimer();
