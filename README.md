@@ -4,9 +4,15 @@ Link: https://olaknowct.github.io/Array-Bankist/index.html
 
 ###### Sample Credentials | username: jd PIN: 2222
 
-## About
+## Description
 
 - Bankist is a banking system alike where you can view balance, show credit/debit history, transfer money and close account
+
+## About
+
+- The Project is used for educational purposes only, its part of the lesson i took from Jonas.
+- To make it more exciting, I improved and developed some few features **(See Improvements Made)** that would make the project more interactive and have better user experience.
+- As part of my learnings and would benefit me, I've listed down here **(See features section)** all the PSEUDO Code, SUMMARY or Feautures from this Project
 
 ### Features, PSEUDO, Summary And Learnings
 
@@ -55,8 +61,19 @@ Link: https://olaknowct.github.io/Array-Bankist/index.html
     		§ Remove own account from the non-persistent array data
     		§ Hide account info
 
-    • SORT Movements Feature
-    	○ Toggles sorting of movements (credit/debit) from highest to lowest (vise versa)
+    • Use International API for Numbers and Dates
+    	○ Intl API can help us to determine the format date of a certain locale and helps to format Numbers
+    	○ Format Date credited and debited
+    	○ Format Amount based on user's locale and currency detail
+
+    • Logout Timer
+    	○ Automatically logout user when inactively not using any action
+    	○ Logout timer is set to 2mins only
+    	○ Logout timer restarts when transfer and loan made.
+
+    • Sets Delay when Transferring and Loaning as if you are using a real Banking system
+    	○ Set Time out Function
+    	○ Proceed processing and Update UI after predefined seconds
 
 ### Improvements Made
 
@@ -69,5 +86,11 @@ Link: https://olaknowct.github.io/Array-Bankist/index.html
     	○ Export and import JS files
     		§ Non-persistent data
     		§ All DOM Elements
+
     • Error Handling if all test cases aren't satisfied
-            § Throw Alert message for a better UX
+            § Throw Alert message
+
+    • Rendering Loader ICON when Transfer and Loan Happens
+    	○ Uses THIS keyword to render loader
+    	○ Refactor Regular function to Arrow function to use lexical THIS keyword
+    	○ CSS for SVG Animation
