@@ -123,6 +123,24 @@ elements.btnLogin.addEventListener('click', function (e) {
     }`;
     elements.containerApp.style.opacity = 100;
 
+    // Create current date and time
+    const now = new Date();
+    const options = {
+      hour: 'numeric',
+      minute: 'numeric',
+      day: 'numeric',
+      month: 'numeric',
+      year: 'numeric',
+      // weekday: 'long',
+    };
+    // const locale = navigator.language;
+    // console.log(locale);
+
+    elements.labelDate.textContent = new Intl.DateTimeFormat(
+      currentAccount.locale,
+      options
+    ).format(now);
+
     // Clear input fields
     elements.inputLoginUsername.value = elements.inputLoginPin.value = '';
     elements.inputLoginPin.blur();
