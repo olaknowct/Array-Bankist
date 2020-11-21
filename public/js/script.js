@@ -130,8 +130,37 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+const startLogOutTimer = function () {
+  const tick = function () {
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(time % 60).padStart(2, 0);
+
+    // In each call, print the remaining time to UI
+    elements.labelTimer.textContent = `${min}:${sec}`;
+
+    // When 0 seconds, stop timer and log out user
+    if (time === 0) {
+      clearInterval(timer);
+      elements.labelWelcome.textContent = 'Log in to get started';
+      elements.containerApp.style.opacity = 0;
+    }
+
+    // Decrease 1s
+    time--;
+  };
+
+  // Set time to 5 minutes
+  let time = 120;
+
+  // Call the timer every second
+  tick();
+  const timer = setInterval(tick, 1000);
+
+  return timer;
+};
+
 // Event handlers
-let currentAccount;
+let currentAccount, timer;
 
 elements.btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
@@ -170,6 +199,9 @@ elements.btnLogin.addEventListener('click', function (e) {
     elements.inputLoginUsername.value = elements.inputLoginPin.value = '';
     elements.inputLoginPin.blur();
 
+    if (timer) clearInterval(timer);
+    timer = startLogOutTimer();
+
     // Update UI
     updateUI(currentAccount);
   } else {
@@ -203,6 +235,10 @@ elements.btnTransfer.addEventListener('click', function (e) {
 
     // Update UI
     updateUI(currentAccount);
+
+    // reset timer
+    clearInterval(timer);
+    timer = startLogOutTimer();
   } else {
     alert('Something went wrong. Please enter valid details');
     elements.inputTransferTo.innerHTML = '';
@@ -216,14 +252,20 @@ elements.btnLoan.addEventListener('click', function (e) {
   const amount = Math.floor(elements.inputLoanAmount.value);
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    // Add movement
-    currentAccount.movements.push(amount);
+    setTimeout(function () {
+      // Add movement
+      currentAccount.movements.push(amount);
 
-    // Add loan date
-    currentAccount.movementsDates.push(new Date().toISOString());
+      // Add loan date
+      currentAccount.movementsDates.push(new Date().toISOString());
 
-    // Update UI
-    updateUI(currentAccount);
+      // Update UI
+      updateUI(currentAccount);
+
+      // Reset timer
+      clearInterval(timer);
+      timer = startLogOutTimer();
+    }, 2500);
   } else {
     alert('10% of amount is greater than on your highest depost');
   }
