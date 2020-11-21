@@ -2,7 +2,7 @@
 
 Link: https://olaknowct.github.io/Array-Bankist/index.html
 
-###### Sample Credentials | username: jd PIN: 2222
+###### Dummy Credentials | username: jd PIN: 2222 | username: js PIN: 1111 | username: stw PIN: 3333 | username: ss PIN: 4444
 
 ## Description
 
