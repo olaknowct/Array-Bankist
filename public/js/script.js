@@ -213,6 +213,12 @@ elements.btnLogin.addEventListener('click', function (e) {
 
 elements.btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
+
+  // renderloader & disable button
+  this.innerHTML = '';
+  this.disabled = true;
+  renderLoader(elements.btnLoan);
+
   const amount = +elements.inputTransferAmount.value;
   const receiverAcc = accounts.find(
     acc => acc.username === elements.inputTransferTo.value
@@ -225,7 +231,7 @@ elements.btnTransfer.addEventListener('click', function (e) {
     currentAccount.balance >= amount &&
     receiverAcc?.username !== currentAccount.username
   ) {
-    setTimeout(function () {
+    setTimeout(() => {
       // Doing the transfer
       currentAccount.movements.push(-amount);
       receiverAcc.movements.push(amount);
@@ -236,6 +242,10 @@ elements.btnTransfer.addEventListener('click', function (e) {
 
       // Update UI
       updateUI(currentAccount);
+
+      // clear loader
+      this.innerHTML = '&rarr;';
+      this.disabled = false;
 
       // reset timer
       clearInterval(timer);
