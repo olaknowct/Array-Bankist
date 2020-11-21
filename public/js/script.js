@@ -217,7 +217,7 @@ elements.btnTransfer.addEventListener('click', function (e) {
   // renderloader & disable button
   this.innerHTML = '';
   this.disabled = true;
-  renderLoader(elements.btnLoan);
+  renderLoader(this);
 
   const amount = +elements.inputTransferAmount.value;
   const receiverAcc = accounts.find(
@@ -264,7 +264,7 @@ elements.btnLoan.addEventListener('click', function (e) {
   // renderloader & disable button
   this.innerHTML = '';
   this.disabled = true;
-  renderLoader(elements.btnLoan);
+  renderLoader(this);
 
   const amount = Math.floor(elements.inputLoanAmount.value);
 
