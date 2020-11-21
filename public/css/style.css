@@ -290,7 +290,8 @@ h2 {
   font-weight: 600;
 }
 
-.form__btn--loan svg {
+.form__btn--loan svg,
+.form__btn--transfer svg {
   height: 1rem;
   width: 5.5rem;
   fill: red;
