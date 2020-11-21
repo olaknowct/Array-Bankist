@@ -269,7 +269,7 @@ elements.btnLoan.addEventListener('click', function (e) {
   const amount = Math.floor(elements.inputLoanAmount.value);
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    setTimeout(function () {
+    setTimeout(() => {
       // Add movement
       currentAccount.movements.push(amount);
 
