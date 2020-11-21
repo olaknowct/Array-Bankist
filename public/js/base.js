@@ -25,3 +25,12 @@ export const elements = {
   inputCloseUsername: document.querySelector('.form__input--user'),
   inputClosePin: document.querySelector('.form__input--pin'),
 };
+
+export const renderLoader = parent => {
+  const loader = `
+        <svg>
+            <use href="./public/img/icons.svg#icon-cw"></use>
+        </svg>
+  `;
+  parent.insertAdjacentHTML('afterbegin', loader);
+};

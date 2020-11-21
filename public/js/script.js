@@ -1,5 +1,5 @@
 'use strict';
-import { elements } from './base.js';
+import { elements, renderLoader } from './base.js';
 import * as acnts from './model/account.js';
 
 const accounts = [
@@ -250,6 +250,11 @@ elements.btnTransfer.addEventListener('click', function (e) {
 
 elements.btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
+
+  // renderloader & disable button
+  this.innerHTML = '';
+  this.disabled = true;
+  renderLoader(elements.btnLoan);
 
   const amount = Math.floor(elements.inputLoanAmount.value);
 
